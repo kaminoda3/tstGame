@@ -95,9 +95,12 @@ public class CTLboxC : MonoBehaviour
         //ゲームが勝ち負け関わらず終了したとき
         if (gameovercheck == true)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 SceneManager.LoadScene("game");
+
             }
         }
     }
