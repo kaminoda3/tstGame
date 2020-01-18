@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class gamemenu : MonoBehaviour
 {
     //ゲームプレイ中にmenuを開いた時用
-    [SerializeField] GameObject manu;
+    [SerializeField] GameObject menu;
     private int mn = 0;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class gamemenu : MonoBehaviour
     //続けるボタン用
     public void tudu()
     {
-        manu.SetActive(false);
+        menu.SetActive(false);
         Time.timeScale = 1;
         //マウスカーソル制御
         Cursor.visible = false;
@@ -34,26 +34,29 @@ public class gamemenu : MonoBehaviour
         //ESCを入力でページを開く
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //menuが開いていた場合
-            if (manu != null)
+            //menuが閉じていた場合
+            if (menu.activeSelf == false)
             {
                 Time.timeScale = 0;
-                manu.SetActive(true);
+                menu.SetActive(true);
                 mn += 1;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
+                
             }
 
-            //menuが閉じていた場合だけど挙動が納得できないので何か考える
-            if (manu == null)
+            //menuが開いていた場合
+            else if (menu.activeSelf==true)
             {
                 Time.timeScale = 1;
-                manu.SetActive(false);
+                menu.SetActive(false);
                 mn -= 1;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Confined;
+                Debug.Log(2);
             }
 
         }
     }
+
 }

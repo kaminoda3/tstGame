@@ -37,6 +37,15 @@ public class PCTL : MonoBehaviour
         //入力を認識する
         inputHORI = Input.GetAxisRaw("Horizontal");
         inputVER = Input.GetAxisRaw("Vertical");
+
+        float xr = 180f; float yr = 290f;
+        //プレイヤーの移動範囲制限
+        transform.position = new Vector3
+            (Mathf.Clamp(transform.position.x, -xr, xr),
+            transform.position.y,
+             Mathf.Clamp(transform.position.z, 0f, yr));
+       // Mathf.Clamp(transform.position.x, -xr, xr);
+        //Mathf.Clamp(transform.position.z, 0f, yr);
     }
 
     //カメラの向きを基準にして操作を行う時に使う
